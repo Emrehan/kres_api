@@ -49,12 +49,12 @@ router.patch('/:date', async (req,res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/:date/:breakfast/:lunch/:dinner', async (req, res) => {
     const menu = new Menu({
-        date: req.body.date,
-        breakfast: req.body.breakfast,
-        lunch: req.body.lunch,
-        dinner: req.body.dinner,
+        date: req.params.date,
+        breakfast: req.params.breakfast,
+        lunch: req.params.lunch,
+        dinner: req.params.dinner
     });
 
     menu.save()
@@ -62,7 +62,7 @@ router.post('/', async (req, res) => {
         res.json(data);
     })
     .catch(err => {
-        res.json({message: err})
+        res.json({gelen_deger:req.body ,message: err})
     })
 });
 

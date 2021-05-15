@@ -34,7 +34,14 @@ router.patch('/:date', async (req,res) => {
     try{
         const updatedPost = await Menu.updateOne(
             { date:req.params.date},
-            { $set: {date: req.body.date, food: req.body.food}}            
+            { $set: 
+                {
+                    date: req.body.date, 
+                    breakfast: req.body.breakfast, 
+                    lunch: req.body.lunch, 
+                    dinner: req.body.dinner,
+                }
+            }            
         );
         res.json(updatedPost);
     }catch(err){
@@ -45,7 +52,9 @@ router.patch('/:date', async (req,res) => {
 router.post('/', async (req, res) => {
     const menu = new Menu({
         date: req.body.date,
-        food: req.body.food
+        breakfast: req.body.breakfast,
+        lunch: req.body.lunch,
+        dinner: req.body.dinner,
     });
 
     menu.save()

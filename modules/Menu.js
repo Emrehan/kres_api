@@ -5,7 +5,15 @@ const MenuSchema = mongoose.Schema({
         type: Date,
         required: true
     },
-    food: {
+    breakfast: {
+        type: String,
+        required: true
+    },
+    lunch: {
+        type: String,
+        required: true
+    },
+    dinner: {
         type: String,
         required: true
     },
